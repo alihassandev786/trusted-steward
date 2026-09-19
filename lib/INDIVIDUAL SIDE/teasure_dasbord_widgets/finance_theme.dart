@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Shared color palette for the Treasure/Income/Expenses screens.
 class FinanceColors {
   FinanceColors._();
-
-
   static const Color card = Color(0xFFF6F2E6);
-
   static const Color darkGreen = Color(0xFF2D5A3D);
   static const Color textDark = Color(0xFF1B1B1B);
   static const Color textMuted = Color(0xFF8D8A7E);
@@ -26,78 +22,35 @@ class FinanceColors {
   static const background = Color(0xffF9F8F2);
 }
 
-/// Text styles for the finance screens — 'Pops' for screen headings,
-/// 'Popp' for normal/body text (both already registered in pubspec.yaml).
 class FinanceText {
   FinanceText._();
-
-  /// Screen headings (e.g. "Income", "Categories", "Treasure Dashboard").
-  static TextStyle heading({double size = 20, Color? color}) {
-    return TextStyle(
-      fontFamily: 'Pops',
-      fontSize: size,
-      fontWeight: FontWeight.w700,
-      color: color ?? FinanceColors.textDark,
-    );
-  }
-
-  /// Row/card titles — semibold by default, weight overridable.
-  static TextStyle subheading({
-    double size = 15,
-    Color? color,
-    FontWeight weight = FontWeight.w600,
-  }) {
-    return TextStyle(
-      fontFamily: 'Popp',
-      fontSize: size,
-      fontWeight: weight,
-      color: color ?? FinanceColors.textDark,
-    );
-  }
-
-  /// Normal/body text — regular weight.
-  static TextStyle body({
-    double size = 13,
-    Color? color,
-    FontWeight weight = FontWeight.w400,
-  }) {
-    return TextStyle(
-      fontFamily: 'Popp',
-      fontSize: size,
-      fontWeight: weight,
-      color: color ?? FinanceColors.textMuted,
-    );
-  }
-
-  /// Big gold amounts (e.g. "$6,500").
-  static TextStyle amountLarge({double size = 30, Color? color}) {
-    return TextStyle(
-      fontFamily: 'Pops',
-      fontSize: size,
-      fontWeight: FontWeight.w700,
-      color: color ?? FinanceColors.gold,
-    );
-  }
+  static TextStyle heading({double size = 20, Color? color}) => TextStyle(
+    fontFamily: 'Pops', fontSize: size, fontWeight: FontWeight.w700,
+    color: color ?? FinanceColors.textDark,
+  );
+  static TextStyle subheading({double size = 15, Color? color,
+    FontWeight weight = FontWeight.w600}) => TextStyle(
+    fontFamily: 'Popp', fontSize: size, fontWeight: weight,
+    color: color ?? FinanceColors.textDark,
+  );
+  static TextStyle body({double size = 13, Color? color,
+    FontWeight weight = FontWeight.w400}) => TextStyle(
+    fontFamily: 'Popp', fontSize: size, fontWeight: weight,
+    color: color ?? FinanceColors.textMuted,
+  );
+  static TextStyle amountLarge({double size = 30, Color? color}) => TextStyle(
+    fontFamily: 'Pops', fontSize: size, fontWeight: FontWeight.w700,
+    color: color ?? FinanceColors.gold,
+  );
 }
 
-/// Shared box decorations — light (cream) containers get rounded corners
-/// in the 25–30 range plus a thin gold border; dark (green) containers
-/// stay borderless.
 class FinanceDecorations {
   FinanceDecorations._();
-
-  static BoxDecoration card({double radius = 28}) {
-    return BoxDecoration(
-      color: FinanceColors.card,
-      borderRadius: BorderRadius.circular(radius),
-      border: Border.all(color: FinanceColors.gold, width: 1.2),
-    );
-  }
-
-  static BoxDecoration dark({double radius = 26}) {
-    return BoxDecoration(
-      color: FinanceColors.darkGreen,
-      borderRadius: BorderRadius.circular(radius),
-    );
-  }
+  static BoxDecoration card({double radius = 28}) => BoxDecoration(
+    color: FinanceColors.card, borderRadius: BorderRadius.circular(radius),
+    border: Border.all(color: FinanceColors.gold, width: 1.2),
+  );
+  static BoxDecoration dark({double radius = 26}) => BoxDecoration(
+    color: FinanceColors.darkGreen, borderRadius: BorderRadius.circular(radius),
+  );
 }

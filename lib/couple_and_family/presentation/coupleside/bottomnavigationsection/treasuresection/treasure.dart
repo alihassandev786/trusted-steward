@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trusted_steward/couple_and_family/core/route/approutes.dart';
 import 'package:trusted_steward/couple_and_family/presentation/Widgets/AppNavigator.dart';
+import 'package:trusted_steward/couple_and_family/presentation/coupleside/bottomnavigationsection/treasuresection/giving_hub_screen.dart';
 
 import '../../../../core/theme/appcolors.dart';
 import '../../../../data/controllers/treasurecontroller.dart';
 import '../../../Widgets/MediaqueryHelperfile.dart';
 import '../../../Widgets/boxshadow.dart';
 import '../../../Widgets/iconcircle.dart';
-
 
 class Treasure extends StatelessWidget {
   const Treasure({super.key});
@@ -33,18 +33,20 @@ class Treasure extends StatelessWidget {
                 style: TextStyle(
                   fontFamily: "pb",
                   fontWeight: FontWeight.bold,
-                  fontSize: AppSize.widthPercent(0.052),
+                  fontSize: AppSize.widthPercent(0.06),
                   color: AppColors.textcolor1,
                 ),
               ),
 
               SizedBox(height: AppSize.heightPercent(0.03)),
 
-              /// REMAINING TO ALLOCATE CARD
+              /// CURRENT TRANSACTION CARD
               Container(
                 width: double.infinity,
-                height: AppSize.height*0.36,
-                padding: EdgeInsets.symmetric(vertical: AppSize.widthPercent(0.07),horizontal: AppSize.widthPercent(0.05)),
+                padding: EdgeInsets.symmetric(
+                  vertical: AppSize.widthPercent(0.06),
+                  horizontal: AppSize.widthPercent(0.05),
+                ),
                 decoration: BoxDecoration(
                   boxShadow: AppShadows.boxShadow,
                   color: AppColors.secondary1,
@@ -54,7 +56,7 @@ class Treasure extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      controller.allocateCardTitle,
+                      "Current Transaction",
                       style: TextStyle(
                         fontFamily: "pb",
                         fontWeight: FontWeight.bold,
@@ -64,65 +66,7 @@ class Treasure extends StatelessWidget {
                     ),
                     SizedBox(height: AppSize.heightPercent(0.03)),
 
-                    /// SHARED INCOME / EXPENSES
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.sharedIncomeLabel,
-                                style: TextStyle(
-                                  fontFamily: "pr",
-                                  fontSize: AppSize.widthPercent(0.034),
-                                  color: AppColors.textcolor2,
-                                ),
-                              ),
-                              SizedBox(height: AppSize.heightPercent(0.007)),
-                              Text(
-                                controller.sharedIncome,
-                                style: TextStyle(
-                                  fontFamily: "pb",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: AppSize.widthPercent(0.07),
-                                  color: AppColors.warning,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                controller.sharedExpensesLabel,
-                                style: TextStyle(
-                                  fontFamily: "pr",
-                                  fontSize: AppSize.widthPercent(0.034),
-                                  color: AppColors.textcolor2,
-                                ),
-                              ),
-                              SizedBox(height: AppSize.heightPercent(0.007)),
-                              Text(
-                                controller.sharedExpenses,
-                                style: TextStyle(
-                                  fontFamily: "pb",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: AppSize.widthPercent(0.07),
-                                  color: AppColors.warning,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(height: AppSize.heightPercent(0.035)),
-
-                    /// FAITHFUL GIVING
+                    /// FAITHFUL GIVING ROW
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -130,7 +74,7 @@ class Treasure extends StatelessWidget {
                           controller.faithfulGivingLabel,
                           style: TextStyle(
                             fontFamily: "pr",
-                            fontSize: AppSize.widthPercent(0.035),
+                            fontSize: AppSize.widthPercent(0.036),
                             color: AppColors.textcolor2,
                           ),
                         ),
@@ -145,20 +89,17 @@ class Treasure extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: AppSize.heightPercent(0.015)),
-                    _ProgressBar(percent: controller.faithfulGivingPercent, color: AppColors.warning),
+                    SizedBox(height: AppSize.heightPercent(0.022)),
 
-                    SizedBox(height: AppSize.heightPercent(0.025)),
-
-                    /// CURRENT SAVINGS
+                    /// CURRENT BUDGET ROW
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          controller.currentSavingsLabel,
+                          "Current Budget",
                           style: TextStyle(
                             fontFamily: "pr",
-                            fontSize: AppSize.widthPercent(0.038),
+                            fontSize: AppSize.widthPercent(0.036),
                             color: AppColors.textcolor2,
                           ),
                         ),
@@ -179,32 +120,60 @@ class Treasure extends StatelessWidget {
 
               SizedBox(height: AppSize.heightPercent(0.025)),
 
-              /// ACTION BUTTONS
+              /// ACTION BUTTONS - 2x2 GRID
               Row(
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         AppNavigator.pushRight(AppRoutes.sharedbudget);
                       },
                       child: _ActionButton(
-                        icon: controller.sharedBudgetIcon,
-                        label: controller.sharedBudgetLabel,
+                        icon: Icons.groups_outlined,
+                        label: "Shared Budget",
                       ),
                     ),
                   ),
                   SizedBox(width: AppSize.widthPercent(0.03)),
                   Expanded(
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         AppNavigator.pushRight(AppRoutes.sharedgoal);
                       },
                       child: _ActionButton(
-                        icon: controller.sharedGoalsIcon,
-                        label: controller.sharedGoalsLabel,
+                        icon: Icons.favorite_border_rounded,
+                        label: "Shared Goals",
                       ),
                     ),
                   ),
+                ],
+              ),
+              SizedBox(height: AppSize.heightPercent(0.02)),
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        Get.to(()=>GivingHubScreen());
+                      },
+                      child: _ActionButton(
+                        icon: Icons.volunteer_activism_outlined,
+                        label: "Giving",
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: AppSize.widthPercent(0.03)),
+                  // Expanded(
+                  //   child: GestureDetector(
+                  //     onTap: () {
+                  //       // TODO: navigate to Budget screen
+                  //     },
+                  //     child: _ActionButton(
+                  //       icon: Icons.account_balance_wallet_outlined,
+                  //       label: "Budget",
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
 
@@ -242,7 +211,7 @@ class Treasure extends StatelessWidget {
   }
 }
 
-/// GREEN ACTION BUTTON (SHARED BUDGET / SHARED GOALS)
+/// GREEN ACTION BUTTON (SHARED BUDGET / SHARED GOALS / GIVING / BUDGET)
 class _ActionButton extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -253,7 +222,7 @@ class _ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: AppSize.heightPercent(0.015)),
+      padding: EdgeInsets.symmetric(vertical: AppSize.heightPercent(0.022)),
       decoration: BoxDecoration(
         color: AppColors.primary1,
         borderRadius: BorderRadius.circular(AppSize.widthPercent(0.05)),
@@ -275,7 +244,7 @@ class _ActionButton extends StatelessWidget {
             style: TextStyle(
               fontFamily: "pm",
               fontWeight: FontWeight.w600,
-              fontSize: AppSize.widthPercent(0.03),
+              fontSize: AppSize.widthPercent(0.032),
               color: Colors.white,
             ),
           ),
@@ -301,7 +270,10 @@ class _TargetCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: AppSize.widthPercent(0.053),horizontal: AppSize.widthPercent(0.052)),
+      padding: EdgeInsets.symmetric(
+        vertical: AppSize.widthPercent(0.053),
+        horizontal: AppSize.widthPercent(0.052),
+      ),
       decoration: BoxDecoration(
         color: AppColors.secondary1,
         boxShadow: AppShadows.boxShadow,

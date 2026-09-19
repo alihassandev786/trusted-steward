@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:trusted_steward/INDIVIDUAL SIDE/auth%20screens/sign_in_screen.dart';
+import 'package:get/get.dart';
 
 import '../dashboard widgets/app_palette.dart';
-import '../widgets/app_title.dart';
 import '../widgets/app_button.dart';
 import '../widgets/app_option_card.dart';
+import '../widgets/app_title.dart';
+import 'sign_up_screen.dart';
 
 class SelectUseScreen extends StatefulWidget {
   const SelectUseScreen({super.key});
@@ -18,7 +17,9 @@ class SelectUseScreen extends StatefulWidget {
 class _SelectUseScreenState extends State<SelectUseScreen> {
   int _selectedIndex = 0;
 
-  final List<Map<String, dynamic>> _options = [
+  // Keep this order consistent with AuthService.roles:
+  // 0 = individual, 1 = couple, 2 = family.
+  static const List<Map<String, Object>> _options = [
     {
       'icon': Icons.person,
       'title': 'Individual',
@@ -35,7 +36,7 @@ class _SelectUseScreenState extends State<SelectUseScreen> {
       'assetImage': 'assets/images/family.png',
       'title': 'Family',
       'description':
-      'Manage your household finances, family goals and foster stewardship.',
+      'Manage your household finances, family goals and stewardship.',
     },
   ];
 
@@ -47,10 +48,7 @@ class _SelectUseScreenState extends State<SelectUseScreen> {
       backgroundColor: AppPalette.background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 24,
-            vertical: 16,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -58,15 +56,15 @@ class _SelectUseScreenState extends State<SelectUseScreen> {
               const AppTitle(
                 title: 'Select Your Use!',
                 subtitle:
-                'Select the account type that best\ndescribes your stewardship journey.',
+                'Select the account type that best\n'
+                    'describes your stewardship journey.',
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: h * 0.05),
               Expanded(
                 child: ListView.separated(
                   itemCount: _options.length,
-                  separatorBuilder: (_, __) =>
-                  const SizedBox(height: 16),
+                  separatorBuilder: (_, __) => const SizedBox(height: 16),
                   itemBuilder: (context, index) {
                     final option = _options[index];
 
@@ -76,11 +74,7 @@ class _SelectUseScreenState extends State<SelectUseScreen> {
                       title: option['title'] as String,
                       description: option['description'] as String,
                       selected: _selectedIndex == index,
-                      onTap: () {
-                        setState(() {
-                          _selectedIndex = index;
-                        });
-                      },
+                      onTap: () => setState(() => _selectedIndex = index),
                     );
                   },
                 ),
@@ -90,7 +84,7 @@ class _SelectUseScreenState extends State<SelectUseScreen> {
                 child: AppButton(
                   label: 'Continue',
                   onPressed: () {
-                    Get.to(()=>SignInScreen(selectedId: _selectedIndex,));
+                    Get.to(() => SignUpScreen(selectedId: _selectedIndex));
                   },
                 ),
               ),

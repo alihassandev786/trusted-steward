@@ -151,7 +151,7 @@ class _OnboardingPage extends StatelessWidget {
                 Text(
                   data.title,
                   style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 35,
                     fontFamily: "pops",
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

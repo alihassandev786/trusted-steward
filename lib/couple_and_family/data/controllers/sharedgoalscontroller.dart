@@ -28,21 +28,21 @@ class SharedGoalsController extends GetxController {
   /// GOALS LIST
   final List<GoalItemData> goals = [
     GoalItemData(
-      imagePath: "assets/images/home2.png",
+      imagePath: "assets/images/goal1.png",
       statusLabel: "Target Dec 2026",
       title: "EmergencyFund",
       rightText: "\$4,000 of \$ 10,000",
       percent: 0.4,
     ),
     GoalItemData(
-      imagePath: "assets/images/home2.png",
+      imagePath: "assets/images/learn2.jpg",
       statusLabel: "Target Aug 2026",
       title: "New Family Home",
       rightText: "15% Saved",
       percent: 0.15,
     ),
     GoalItemData(
-      imagePath: "assets/images/home2.png",
+      imagePath: "assets/images/journel.png",
       statusLabel: "Goal Reached",
       title: "Annual Mission Trip",
       rightText: "July 2025",

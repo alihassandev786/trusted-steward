@@ -19,8 +19,10 @@ void main() {
       systemNavigationBarDividerColor: Colors.transparent,
     ),
   );
+
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -37,8 +39,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: ChildMainScreen(),
-      //const SplashScreen(),
+      home:  const SplashScreen(),
+      //ChildMainScreen(),
+
 
     );
   }

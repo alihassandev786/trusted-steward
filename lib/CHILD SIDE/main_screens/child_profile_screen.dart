@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:trusted_steward/CHILD%20SIDE/main_screens/profile_items_screen/child_notification_screen.dart';
 import 'package:trusted_steward/CHILD%20SIDE/main_screens/profile_items_screen/edit_profile_screen.dart';
-
 import '../../INDIVIDUAL SIDE/learn_screen_widgets/learn_card.dart';
 import '../../INDIVIDUAL SIDE/learn_screen_widgets/learn_theme.dart';
 import '../../INDIVIDUAL SIDE/main_screens/profile_screen_items/help_support_screen.dart';

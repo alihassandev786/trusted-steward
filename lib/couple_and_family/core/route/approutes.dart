@@ -1,3 +1,5 @@
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:trusted_steward/couple_and_family/presentation/familyside/fbottomnavigationsection/fhomesection/fstewardscore.dart';
@@ -25,7 +27,7 @@ import '../../presentation/coupleside/bottomnavigationsection/profilesection/pri
 import '../../presentation/coupleside/bottomnavigationsection/profilesection/priavcyandsecuritysection/termsandcondition.dart';
 import '../../presentation/coupleside/bottomnavigationsection/profilesection/profile.dart';
 import '../../presentation/coupleside/bottomnavigationsection/profilesection/rateapp.dart';
-import '../../presentation/coupleside/bottomnavigationsection/time.dart';
+import '../../presentation/coupleside/bottomnavigationsection/timesection/time.dart';
 import '../../presentation/coupleside/bottomnavigationsection/treasuresection/sharedbudget.dart';
 import '../../presentation/coupleside/bottomnavigationsection/treasuresection/sharedgoals.dart';
 import '../../presentation/coupleside/bottomnavigationsection/treasuresection/treasure.dart';
@@ -198,7 +200,11 @@ class AppRoutes {
     ),
     GetPage(
       name: sharedgoal,
-      page: () => const Sharedgoals(),
+      page: () => Sharedgoals(
+        onAddGoal: () {
+          Get.toNamed('/add-goal');
+        },
+      ),
       transition: Transition.rightToLeft,
       opaque: true,
       transitionDuration: const Duration(milliseconds: 250),

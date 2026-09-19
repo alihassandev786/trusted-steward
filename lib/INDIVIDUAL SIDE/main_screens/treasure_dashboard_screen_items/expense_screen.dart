@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:trusted_steward/INDIVIDUAL%20SIDE/main_screens/treasure_dashboard_screen_items/add_expense_screen.dart';
 import '../../teasure_dasbord_widgets/category_tile.dart';
 import '../../teasure_dasbord_widgets/detail_screen_header.dart';
 import '../../teasure_dasbord_widgets/finance_theme.dart';
@@ -48,7 +51,20 @@ class ExpensesScreen extends StatelessWidget {
                       height: 52,
                       child: ElevatedButton(
                         onPressed: () {
-                          // TODO: add-expense flow
+                         Get.to(()=>AddExpenseScreen(summaryCard: SummaryHeaderCard(
+                             label: 'Pledged Amount',
+                             amount: '\$120.00',
+                             inlineSuffix: Row(
+                               children: [
+                                 Flexible(
+                                   child: Text('Balance and ready to allocate',maxLines: 1,
+                                     overflow: TextOverflow.ellipsis,
+                                     style: FinanceText.body(size: 13),
+                                   ),
+                                 ),
+                               ],
+                             )
+                         ),));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: FinanceColors.darkGreen,

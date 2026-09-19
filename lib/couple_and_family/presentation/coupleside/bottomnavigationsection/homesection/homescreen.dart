@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:trusted_steward/INDIVIDUAL%20SIDE/main_screens/dashboard_items/steward_score_screen.dart';
 import 'package:trusted_steward/couple_and_family/core/route/approutes.dart';
 import 'package:trusted_steward/couple_and_family/presentation/Widgets/AppNavigator.dart';
-import 'package:trusted_steward/couple_and_family/presentation/Widgets/Button.dart';
-
+import '../couple_home_widgets/GoalCard.dart';
 import '../../../../core/theme/appcolors.dart';
-import '../../../Widgets/Customtile.dart';
 import '../../../Widgets/MediaqueryHelperfile.dart';
 import '../../../Widgets/boxshadow.dart';
 import '../../../Widgets/iconcircle.dart';
+import '../couple_home_widgets/ProgressStatTile.dart';
+
+import '../couple_home_widgets/SectionHeaderAction.dart';
+import '../couple_home_widgets/TaskCheckTile.dart';
+
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -91,299 +97,200 @@ class _HomescreenState extends State<Homescreen> {
               SizedBox(height: AppSize.heightPercent(0.025)),
 
               /// STEWARDSHIP SCORE CARD
-              Container(
-                width: double.infinity,
-                height: AppSize.height * 0.48,
-                padding: EdgeInsets.symmetric(
-                  vertical: AppSize.heightPercent(0.02),
-                  horizontal: AppSize.widthPercent(0.05),
-                ),
-                decoration: BoxDecoration(
-                  boxShadow: AppShadows.boxShadow,
-                  color: AppColors.secondary1,
-                  borderRadius: BorderRadius.circular(
-                    AppSize.widthPercent(0.05),
+              GestureDetector(
+                onTap: (){Get.to(()=>StewardScoreScreen());},
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    vertical: AppSize.heightPercent(0.02),
+                    horizontal: AppSize.widthPercent(0.05),
                   ),
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "Shared with Partner",
-                      style: TextStyle(
-                        fontFamily: "pr",
-                        fontSize: AppSize.widthPercent(0.03),
-                        color: AppColors.textcolor2,
-                      ),
+                  decoration: BoxDecoration(
+                    boxShadow: AppShadows.boxShadow,
+                    color: AppColors.secondary1,
+                    borderRadius: BorderRadius.circular(
+                      AppSize.widthPercent(0.05),
                     ),
-                    SizedBox(height: AppSize.heightPercent(0.018)),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Shared with Partner",
+                        style: TextStyle(
+                          fontFamily: "pr",
+                          fontSize: AppSize.widthPercent(0.03),
+                          color: AppColors.textcolor2,
+                        ),
+                      ),
+                      SizedBox(height: AppSize.heightPercent(0.018)),
 
-                    /// SCORE RING
-                    SizedBox(
-                      height: AppSize.widthPercent(0.36),
-                      width: AppSize.widthPercent(0.36),
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SizedBox(
-                            height: AppSize.widthPercent(0.4),
-                            width: AppSize.widthPercent(0.4),
-                            child: CircularProgressIndicator(
-                              value: 885 / 1000,
-                              strokeWidth: AppSize.widthPercent(0.02),
-                              backgroundColor: AppColors.warning.withOpacity(
-                                0.15,
-                              ),
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                AppColors.warning,
+                      /// SCORE RING
+                      SizedBox(
+                        height: AppSize.widthPercent(0.36),
+                        width: AppSize.widthPercent(0.36),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              height: AppSize.widthPercent(0.4),
+                              width: AppSize.widthPercent(0.4),
+                              child: CircularProgressIndicator(
+                                value: 885 / 1000,
+                                strokeWidth: AppSize.widthPercent(0.02),
+                                backgroundColor: AppColors.warning.withOpacity(
+                                  0.15,
+                                ),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  AppColors.warning,
+                                ),
                               ),
                             ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "885",
+                                  style: TextStyle(
+                                    fontFamily: "pb",
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: AppSize.widthPercent(0.07),
+                                    color: AppColors.warning,
+                                  ),
+                                ),
+                                Text(
+                                  "/1000",
+                                  style: TextStyle(
+                                    fontFamily: "pr",
+                                    fontSize: AppSize.widthPercent(0.03),
+                                    color: AppColors.textcolor2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      SizedBox(height: AppSize.heightPercent(0.02)),
+                      Text(
+                        "Couple Stewardship Score",
+                        style: TextStyle(
+                          fontFamily: "pb",
+                          fontWeight: FontWeight.bold,
+                          fontSize: AppSize.widthPercent(0.04),
+                          color: AppColors.textcolor1,
+                        ),
+                      ),
+                      SizedBox(height: AppSize.heightPercent(0.004)),
+                      Text(
+                        "Top 15% of households",
+                        style: TextStyle(
+                          fontFamily: "pr",
+                          fontSize: AppSize.widthPercent(0.03),
+                          color: AppColors.textcolor2,
+                        ),
+                      ),
+
+                      SizedBox(height: AppSize.heightPercent(0.012)),
+
+                      /// TIME / TALENT / TREASURE
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _StatIcon(
+                            icon: Icons.access_time_rounded,
+                            label: "Time",
                           ),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "885",
-                                style: TextStyle(
-                                  fontFamily: "pb",
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: AppSize.widthPercent(0.07),
-                                  color: AppColors.textcolor1,
-                                ),
-                              ),
-                              Text(
-                                "/1000",
-                                style: TextStyle(
-                                  fontFamily: "pr",
-                                  fontSize: AppSize.widthPercent(0.03),
-                                  color: AppColors.textcolor2,
-                                ),
-                              ),
-                            ],
+                          _StatIcon(
+                            icon: Icons.psychology_outlined,
+                            label: "Talent",
+                          ),
+                          _StatIcon(
+                            icon: Icons.badge_outlined,
+                            label: "Treasure",
                           ),
                         ],
                       ),
-                    ),
-
-                    SizedBox(height: AppSize.heightPercent(0.02)),
-                    Text(
-                      "Couple Stewardship Score",
-                      style: TextStyle(
-                        fontFamily: "pb",
-                        fontWeight: FontWeight.bold,
-                        fontSize: AppSize.widthPercent(0.04),
-                        color: AppColors.textcolor1,
-                      ),
-                    ),
-                    SizedBox(height: AppSize.heightPercent(0.004)),
-                    Text(
-                      "Top 15% of households",
-                      style: TextStyle(
-                        fontFamily: "pr",
-                        fontSize: AppSize.widthPercent(0.03),
-                        color: AppColors.textcolor2,
-                      ),
-                    ),
-
-                    SizedBox(height: AppSize.heightPercent(0.012)),
-
-                    /// TIME / TALENT / TREASURE
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _StatIcon(
-                          icon: Icons.access_time_rounded,
-                          label: "Time",
-                        ),
-                        _StatIcon(
-                          icon: Icons.psychology_outlined,
-                          label: "Talent",
-                        ),
-                        _StatIcon(
-                          icon: Icons.badge_outlined,
-                          label: "Treasure",
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: AppSize.height * 0.018),
-                    CustomButton(
-                      title: "View Details",
-                      onTap: () {
-                        AppNavigator.pushRight(AppRoutes.stewardscore);
-                      },
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: AppSize.heightPercent(0.028)),
-
-              /// SHARED HOUSEHOLD
-              Text(
-                "Shared Household",
-                style: TextStyle(
-                  fontFamily: "pb",
-                  fontWeight: FontWeight.bold,
-                  fontSize: AppSize.widthPercent(0.04),
-                  color: AppColors.textcolor1,
-                ),
-              ),
-              SizedBox(height: AppSize.heightPercent(0.018)),
-
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppSize.height * 0.028),
-                  boxShadow: AppShadows.boxShadow,
-                ),
-                child: CustomTile(
-                  height: AppSize.height * 0.105,
-                  title: "Shared Budget",
-                  subtitle: "85% Utilized",
-                  borderRadius: AppSize.height * 0.028,
-                  backgroundColor: AppColors.secondary1,
-                  titleColor: AppColors.textcolor1,
-                  subtitleColor: AppColors.textcolor2,
-                  leading: IconCircle(
-                    icon: Icons.credit_card_outlined,
-                    iconColor: AppColors.primary1,
-                    backgroundColor: AppColors.primary1,
-                  ),
-                  trailing: SizedBox(
-                    width: AppSize.widthPercent(0.28),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ProgressBar(percent: 0.85, color: AppColors.warning),
-                        SizedBox(height: AppSize.heightPercent(0.006)),
-                        Text(
-                          "\$ 1,200 left",
-                          style: TextStyle(
-                            fontFamily: "pr",
-                            fontSize: AppSize.widthPercent(0.03),
-                            color: AppColors.textcolor2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: AppSize.heightPercent(0.01)),
-
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppSize.height * 0.028),
-                  boxShadow: AppShadows.boxShadow,
-                ),
-                child: CustomTile(
-                  title: "Shared Giving",
-                  height: AppSize.height * 0.105,
-                  subtitle: "Tithe Goal Reached",
-                  backgroundColor: AppColors.secondary1,
-                  titleColor: AppColors.textcolor1,
-                  subtitleColor: AppColors.textcolor2,
-                  leading: IconCircle(
-                    icon: Icons.volunteer_activism_outlined,
-                    iconColor: AppColors.primary1,
-                    backgroundColor: AppColors.primary1,
-                  ),
-                  trailing: SizedBox(
-                    width: AppSize.widthPercent(0.28),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ProgressBar(percent: 1, color: AppColors.warning),
-                        SizedBox(height: AppSize.heightPercent(0.006)),
-                        Text(
-                          "100%",
-                          style: TextStyle(
-                            fontFamily: "pr",
-                            fontSize: AppSize.widthPercent(0.03),
-                            color: AppColors.textcolor2,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: AppSize.heightPercent(0.01)),
-
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppSize.height * 0.028),
-                  boxShadow: AppShadows.boxShadow,
-                ),                child: CustomTile(
-                  title: "Emergency Fund",
-                  subtitle: "40% Funded",
-                  height: AppSize.height * 0.105,
-                  backgroundColor: AppColors.secondary1,
-                  titleColor: AppColors.textcolor1,
-                  subtitleColor: AppColors.textcolor2,
-                  leading: IconCircle(
-                    icon: Icons.savings_outlined,
-                    iconColor: AppColors.primary1,
-                    backgroundColor: AppColors.primary1,
-                  ),
-                  trailing: SizedBox(
-                    width: AppSize.widthPercent(0.28),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _ProgressBar(percent: 0.4, color: AppColors.warning),
-                        SizedBox(height: AppSize.heightPercent(0.006)),
-                        Text(
-                          "Goal: \$10K",
-                          style: TextStyle(
-                            fontFamily: "pr",
-                            fontSize: AppSize.widthPercent(0.03),
-                            color: AppColors.textcolor2,
-                          ),
-                        ),
-                      ],
-                    ),
+                    ],
                   ),
                 ),
               ),
 
               SizedBox(height: AppSize.heightPercent(0.03)),
 
-              /// TODAY'S PLAN
+              /// OUR PROGRESS
               Text(
-                "Today's Plan",
+                "Our Progress",
                 style: TextStyle(
                   fontFamily: "pb",
                   fontWeight: FontWeight.bold,
-                  fontSize: AppSize.widthPercent(0.04),
+                  fontSize: AppSize.widthPercent(0.045),
                   color: AppColors.textcolor1,
                 ),
               ),
               SizedBox(height: AppSize.heightPercent(0.018)),
 
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppSize.height * 0.028),
-                  boxShadow: AppShadows.boxShadow,
-                ),                child: CustomTile(
-                  title: "Review Monthly Budget",
-                  subtitle: "Assigned to Sarah",
-                  height: AppSize.height * 0.105,
-                  backgroundColor: AppColors.secondary1,
-                  titleColor: AppColors.textcolor1,
-                  subtitleColor: AppColors.textcolor2,
-                  leading: IconCircle(
-                    icon: Icons.assignment_outlined,
-                    iconColor: AppColors.primary1,
-                    backgroundColor: AppColors.primary1,
-                  ),
-                  trailing: Icon(
-                    Icons.people_alt_outlined,
-                    color: AppColors.textcolor1,
-                    size: AppSize.widthPercent(0.06),
-                  ),
-                ),
+              ProgressStatTile(
+                icon: Icons.access_time_rounded,
+                title: "Time",
+                subtitle: "4/5 daily habits",
+                percent: 0.8,
+              ),
+              SizedBox(height: AppSize.heightPercent(0.012)),
+              ProgressStatTile(
+                icon: Icons.psychology_outlined,
+                title: "Talents",
+                subtitle: "2 skills growing",
+                percent: 0.4,
+              ),
+              SizedBox(height: AppSize.heightPercent(0.012)),
+              ProgressStatTile(
+                icon: Icons.credit_card_outlined,
+                title: "Treasure",
+                subtitle: "On track",
+                percent: 0.9,
+              ),
+
+              SizedBox(height: AppSize.heightPercent(0.03)),
+
+              /// SHARED GOALS
+              SectionHeaderAction(
+                title: "Shared Goals",
+                onAddTap: () {
+                  // TODO: navigate to add-goal screen
+                },
+              ),
+              SizedBox(height: AppSize.heightPercent(0.018)),
+
+              GoalCard(
+                title: "Emergency Fund",
+                subtitle: "Peace-of-mind liquid reserve",
+                percent: 0.65,
+                currentLabel: "\$6,500",
+                targetLabel: "Target: \$10,000",
+              ),
+
+              SizedBox(height: AppSize.heightPercent(0.03)),
+
+              /// SHARED TASKS
+              SectionHeaderAction(
+                title: "Shared Tasks",
+                onAddTap: () {
+                  // TODO: navigate to add-task screen
+                },
+              ),
+              SizedBox(height: AppSize.heightPercent(0.018)),
+
+              TaskCheckTile(
+                title: "Pay Electricity Bill",
+                assignedTo: "John",
+                dueLabel: "Today",
+              ),
+              SizedBox(height: AppSize.heightPercent(0.012)),
+              TaskCheckTile(
+                title: "Plan Weekend Family Sabbath",
+                assignedTo: "Sarah",
+                dueLabel: "Tomorrow",
               ),
 
               SizedBox(height: AppSize.heightPercent(0.03)),
@@ -394,7 +301,7 @@ class _HomescreenState extends State<Homescreen> {
                 style: TextStyle(
                   fontFamily: "pb",
                   fontWeight: FontWeight.bold,
-                  fontSize: AppSize.widthPercent(0.04),
+                  fontSize: AppSize.widthPercent(0.045),
                   color: AppColors.textcolor1,
                 ),
               ),
@@ -402,7 +309,6 @@ class _HomescreenState extends State<Homescreen> {
 
               Container(
                 width: double.infinity,
-                height: AppSize.height * 0.37,
                 decoration: BoxDecoration(
                   boxShadow: AppShadows.boxShadow,
                   color: AppColors.secondary1,
@@ -474,13 +380,20 @@ class _HomescreenState extends State<Homescreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: AppSize.widthPercent(0.04),
-                      ),
+                      ).copyWith(bottom: AppSize.heightPercent(0.02)),
                       child: Row(
                         children: [
                           Expanded(
-                            child: _ProgressBar(
-                              percent: 0.65,
-                              color: AppColors.warning,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: LinearProgressIndicator(
+                                value: 0.65,
+                                minHeight: AppSize.heightPercent(0.008),
+                                backgroundColor: const Color(0xffD9D9D9),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  AppColors.warning,
+                                ),
+                              ),
                             ),
                           ),
                           SizedBox(width: AppSize.widthPercent(0.02)),
@@ -493,56 +406,6 @@ class _HomescreenState extends State<Homescreen> {
                             ),
                           ),
                         ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: AppSize.heightPercent(0.03)),
-
-              /// QUOTE CARD
-              Container(
-                width: double.infinity,
-                height: AppSize.height * 0.217,
-                padding: EdgeInsets.all(AppSize.widthPercent(0.045)),
-                decoration: BoxDecoration(
-                  boxShadow: AppShadows.boxShadow,
-                  color: AppColors.primary1,
-                  borderRadius: BorderRadius.circular(
-                    AppSize.widthPercent(0.06),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "99",
-                      style: TextStyle(
-                        fontFamily: "pb",
-                        fontWeight: FontWeight.bold,
-                        fontSize: AppSize.widthPercent(0.08),
-                        color: AppColors.warning,
-                      ),
-                    ),
-                    Text(
-                      "Two are better than one,Because they have a good return for their labor.\"",
-                      style: TextStyle(
-                        fontFamily: "pm",
-                        fontWeight: FontWeight.w600,
-                        fontSize: AppSize.widthPercent(0.038),
-                        color: Colors.white,
-                        height: 1.35,
-                      ),
-                    ),
-                    SizedBox(height: AppSize.heightPercent(0.02)),
-                    Text(
-                      "ECCLESIASTES 4:9",
-                      style: TextStyle(
-                        fontFamily: "pr",
-                        fontSize: AppSize.widthPercent(0.032),
-                        color: Colors.white70,
-                        letterSpacing: 0.5,
                       ),
                     ),
                   ],
@@ -587,27 +450,6 @@ class _StatIcon extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// SMALL LINEAR PROGRESS BAR
-class _ProgressBar extends StatelessWidget {
-  final double percent;
-  final Color color;
-
-  const _ProgressBar({required this.percent, required this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: LinearProgressIndicator(
-        value: percent,
-        minHeight: AppSize.heightPercent(0.008),
-        backgroundColor: const Color(0xffD9D9D9),
-        valueColor: AlwaysStoppedAnimation<Color>(color),
-      ),
     );
   }
 }

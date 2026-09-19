@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trusted_steward/CHILD%20SIDE/main_screens/main_screen_child.dart';
 import 'package:trusted_steward/couple_and_family/core/route/approutes.dart';
 import 'package:trusted_steward/couple_and_family/presentation/Widgets/AppNavigator.dart';
 import 'package:trusted_steward/couple_and_family/presentation/Widgets/boxshadow.dart';
@@ -224,7 +225,7 @@ class _FamilysetupState extends State<Familysetup> {
                       _buildActionButton(
                         icon: Icons.sentiment_satisfied_alt_rounded,
                         label: 'Add Junior',
-                        onTap: controller.addJunior,
+                        onTap: (){Get.to(()=>ChildMainScreen());}
                       ),
                     ],
                   ),

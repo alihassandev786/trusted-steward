@@ -47,7 +47,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
     'Other': '+',
   };
 
-  static const _genders = ['Male', 'Female', 'Other'];
+  static const _genders = ['Male', 'Female'];
 
   static const _timezones = [
     'UTC-08:00 Pacific Time',

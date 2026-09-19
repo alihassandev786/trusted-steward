@@ -5,7 +5,7 @@ import '../../../core/theme/appcolors.dart';
 import '../../../data/controllers/bottomnavigationcontroller.dart';
 import 'homesection/homescreen.dart';
 import 'learnsection/learn.dart';
-import 'time.dart';
+import 'timesection/time.dart';
 import 'treasuresection/treasure.dart';
 import 'profilesection/profile.dart';
 
